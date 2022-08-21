@@ -338,8 +338,9 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   SizedBox(
-                    width:
-                        kIsWeb ? 441 : MediaQuery.of(context).size.width * 0.6,
+                    width: kIsWeb
+                        ? (441 * 0.6)
+                        : MediaQuery.of(context).size.width * 0.6,
                     child: GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: Themes.colors.length,
