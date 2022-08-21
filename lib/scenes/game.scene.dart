@@ -529,15 +529,13 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                   }
                 },
                 onComplete: (matrix) {
-                  Future.delayed(const Duration(milliseconds: 500), () {
-                    NavHelper.navigateReplace(
-                      context,
-                      GameCompleteScreen(
-                        level: widget.level,
-                        matrixBlocks: matrix,
-                      ),
-                    );
-                  });
+                  NavHelper.navigateReplace(
+                    context,
+                    GameCompleteScreen(
+                      level: widget.level,
+                      matrixBlocks: matrix,
+                    ),
+                  );
                 },
               ),
             ),
