@@ -48,29 +48,39 @@ class _LevelSelectionSceneState extends State<LevelSelectionScene> {
                     ),
                   ],
                 ),
-                GridView.builder(
-                  padding: const EdgeInsets.all(6),
-                  physics: const BouncingScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 8.0 / 11,
-                  ),
-                  itemCount: levelController.levels.length,
-                  itemBuilder: (context, index) {
-                    Level level = levelController.levels[index];
+                if (levelController.levels.isEmpty)
+                  Expanded(
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(Colors.white),
+                      ),
+                    ),
+                  )
+                else
+                  GridView.builder(
+                    padding: const EdgeInsets.all(6),
+                    physics: const BouncingScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 8.0 / 11,
+                    ),
+                    itemCount: levelController.levels.length,
+                    itemBuilder: (context, index) {
+                      Level level = levelController.levels[index];
 
-                    return ItemLevel(
-                      level: level,
-                      onTap: () {
-                        playerController.pointer.value = PenTool.mark;
-                        NavHelper.navigatePush(
-                          context,
-                          GameScreen(level: level),
-                        );
-                      },
-                    );
-                  },
-                ).addExpanded,
+                      return ItemLevel(
+                        level: level,
+                        onTap: () {
+                          playerController.pointer.value = PenTool.mark;
+                          NavHelper.navigatePush(
+                            context,
+                            GameScreen(level: level),
+                          );
+                        },
+                      );
+                    },
+                  ).addExpanded,
               ],
             ),
           ),

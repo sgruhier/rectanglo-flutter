@@ -59,7 +59,17 @@ class GameScene extends FlameGame with HasTappables, HasDraggables {
   });
 
   @override
-  Vector2 get size => Vector2(441, 882);
+  Vector2 get size {
+    if (screenSize.width > screenSize.height) {
+      return Vector2(441, 882);
+    } else {
+      if (screenSize.width < 441) {
+        return Vector2(screenSize.width, 882);
+      } else {
+        return Vector2(441, 882);
+      }
+    }
+  }
 
   @override
   void handleDragUpdate(int pointerId, DragUpdateDetails details) {
