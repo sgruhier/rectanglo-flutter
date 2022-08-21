@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "495443396349",
+    "firebase_url": "https://rectanglo-50778401.firebaseio.com",
+    "project_id": "rectanglo-50778401",
+    "storage_bucket": "rectanglo-50778401.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495443396349:android:8f77beb624770a2d03e094",
+        "android_client_info": {
+          "package_name": "dev.studiocloud.rectanglo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "495443396349-fsi00ek7eapmj1fp93s1hoegk6asjo1c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkI-gxfLHbyc8iMUxe0vZcbG-Jjecr3ME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495443396349-fsi00ek7eapmj1fp93s1hoegk6asjo1c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
