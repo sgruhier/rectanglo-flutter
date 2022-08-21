@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rectanglo/components/pop_button.dart';
 import 'package:rectanglo/config/themes.dart';
 import 'package:rectanglo/r.dart';
+import 'package:rectanglo/scenes/about.scene.dart';
 import 'package:rectanglo/scenes/create_level_info.scene.dart';
 import 'package:rectanglo/scenes/level_selection.scene.dart';
 import 'package:rectanglo/utils/nav_helper.dart';
@@ -25,6 +26,7 @@ class _MainMenuSceneState extends State<MainMenuScene> {
         child: SizedBox(
           width: kIsWeb ? 441 : MediaQuery.of(context).size.width,
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Row(
                 children: [
@@ -35,7 +37,9 @@ class _MainMenuSceneState extends State<MainMenuScene> {
                     enableShadow: true,
                     onTap: () {
                       NavHelper.navigatePush(
-                          context, const LevelSelectionScene());
+                        context,
+                        const LevelSelectionScene(),
+                      );
                     },
                     padding: EdgeInsets.zero,
                     child: SizedBox(
@@ -87,7 +91,12 @@ class _MainMenuSceneState extends State<MainMenuScene> {
                     color: Colors.white,
                     shadowColor: Colors.black.withOpacity(0.1),
                     enableShadow: true,
-                    onTap: () {},
+                    onTap: () {
+                      NavHelper.navigatePush(
+                        context,
+                        const AboutScreen(),
+                      );
+                    },
                     padding: EdgeInsets.zero,
                     child: SizedBox(
                       width: double.infinity,

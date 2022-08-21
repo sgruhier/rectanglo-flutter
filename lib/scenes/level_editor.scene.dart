@@ -6,7 +6,6 @@ import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rectanglo/components/flat_card.dart';
 import 'package:rectanglo/components/pop_button.dart';
 import 'package:rectanglo/components/ripple_button.dart';
 import 'package:rectanglo/config/themes.dart';
@@ -338,51 +337,33 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.6,
-                        height: MediaQuery.of(context).size.height * 0.15,
-                        child: GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: Themes.colors.length,
-                          shrinkWrap: true,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 6,
-                          ),
-                          itemBuilder: (context, index) {
-                            return PopButton(
-                              onTap: () {
-                                playerController.pointer.value = PenTool.mark;
-                                playerController.selectedColor.value =
-                                    Themes.colors[index];
-                              },
-                              radius: 4,
-                              color: Themes.colors[index],
-                              border: Border.all(
-                                color: Themes.black,
-                                width: 1,
-                              ),
-                            ).addAllMargin(4);
-                          },
-                        ),
+                  SizedBox(
+                    width:
+                        kIsWeb ? 441 : MediaQuery.of(context).size.width * 0.6,
+                    child: GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: Themes.colors.length,
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 6,
                       ),
-                      Obx(
-                        () => FlatCard(
-                          width: (MediaQuery.of(context).size.height * 0.1) - 8,
-                          height:
-                              (MediaQuery.of(context).size.height * 0.1) - 8,
-                          color: playerController.selectedColor.value,
+                      itemBuilder: (context, index) {
+                        return PopButton(
+                          onTap: () {
+                            playerController.pointer.value = PenTool.mark;
+                            playerController.selectedColor.value =
+                                Themes.colors[index];
+                          },
+                          radius: 4,
+                          color: Themes.colors[index],
                           border: Border.all(
                             color: Themes.black,
                             width: 1,
                           ),
-                        ).addMarginLeft(8),
-                      ),
-                    ],
+                        ).addAllMargin(4);
+                      },
+                    ),
                   ).addMarginBottom(24),
                   Obx(
                     () => Row(
@@ -423,6 +404,21 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
                           child: const Icon(
                             Icons.delete_rounded,
                             color: Themes.black,
+                            size: 24,
+                          ),
+                        ),
+                        Container(width: 12),
+                        PopButton(
+                          radius: 4,
+                          border: Border.all(
+                            color: Themes.black,
+                            width: 1,
+                          ),
+                          color: playerController.selectedColor.value,
+                          onTap: () {},
+                          child: const Icon(
+                            Icons.delete_rounded,
+                            color: Colors.transparent,
                             size: 24,
                           ),
                         ),
@@ -484,7 +480,8 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
 
           levelController.firebaseFirestore
               .collection('levels')
-              .add(
+              .doc(id)
+              .set(
                 widget.level.toJson(),
               )
               .whenComplete(() {
