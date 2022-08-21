@@ -108,7 +108,7 @@ class _CreateLevelInfoState extends State<CreateLevelInfo> {
                       backgroundColor: Colors.white,
                     );
 
-                    NavHelper.navigatePush(
+                    NavHelper.navigateReplace(
                       context,
                       LevelEditorScreen(level: level),
                     );

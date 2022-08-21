@@ -72,7 +72,9 @@ class ItemLevel extends StatelessWidget {
                 Text(
                   level.description,
                   style: Themes().blackBold16,
-                ),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ).addFlexible,
               ],
             ).addAllMargin(4),
             Row(
@@ -86,6 +88,17 @@ class ItemLevel extends StatelessWidget {
                   level.playersCount.toString(),
                   style: Themes().black16,
                 ).addMarginLeft(4),
+                const Icon(
+                  Icons.person_rounded,
+                  size: 16,
+                  color: Themes.primary,
+                ).addMarginLeft(12),
+                Text(
+                  level.creatorName,
+                  style: Themes().black16,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ).addMarginLeft(4).addFlexible,
               ],
             ).addAllMargin(4),
           ],

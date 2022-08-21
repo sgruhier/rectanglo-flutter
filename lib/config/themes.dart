@@ -6,12 +6,15 @@ class Themes {
   static const Color black = Color(0xff000000);
   static const Color red = Color(0xffEB5757);
   static const Color green = Color(0xff27AE60);
+  static const Color lightGreen = Color(0xffb5e61c);
+  static const Color greenish = Color(0xff46e655);
   static const Color stroke = Color(0xffBCBCBC);
   static const Color blue = Color(0xff4751D7);
-  static const Color reddish = Color(0xffFF576B);
+  static const Color reddish = Color(0xfff65b63);
   static const Color cyan = Color(0xff0CEAE2);
   static const Color orange = Color(0xffffff904a);
   static const Color purple = Color(0xff874EDC);
+  static const Color purplish = Color(0xff7f86e3);
   static const Color blueGrey = Color(0xffA9C8F2);
   static const Color magenta = Color(0xffE92B96);
   static const Color yellow = Color(0xffFFD228);
@@ -20,20 +23,27 @@ class Themes {
   static const Color line = Color(0xff424242);
   static const Color white = Color(0xffffffff);
   static const Color brown = Color(0xffb97a56);
+  static const Color darkerBrown = Color(0xff880014);
   static const Color sea = Color(0xff99d9ea);
   static const Color sky = Color(0xff35a2e8);
 
   static const List<Color> colors = [
     white,
     black,
+    grey,
     red,
+    reddish,
     green,
+    lightGreen,
+    greenish,
     blue,
-    orange,
     purple,
+    purplish,
     magenta,
+    orange,
     primary,
     brown,
+    darkerBrown,
     sea,
     sky,
   ];

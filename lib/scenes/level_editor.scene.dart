@@ -13,6 +13,8 @@ import 'package:rectanglo/config/themes.dart';
 import 'package:rectanglo/data/controller/level_controller.dart';
 import 'package:rectanglo/data/controller/player_controller.dart';
 import 'package:rectanglo/models/level.dart';
+import 'package:rectanglo/scenes/level_selection.scene.dart';
+import 'package:rectanglo/utils/nav_helper.dart';
 import 'package:widget_helper/widget_helper.dart';
 
 import '../components/question_dialog.dart';
@@ -337,12 +339,12 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
                         width: MediaQuery.of(context).size.width * 0.6,
-                        height: MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.15,
                         child: GridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: Themes.colors.length,
@@ -354,6 +356,7 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
                           itemBuilder: (context, index) {
                             return PopButton(
                               onTap: () {
+                                playerController.pointer.value = PenTool.mark;
                                 playerController.selectedColor.value =
                                     Themes.colors[index];
                               },
@@ -440,8 +443,8 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
       context,
       dismissable: false,
       child: QuestionDialog(
-        title: "End Session",
-        message: "Are you sure want to end this session?",
+        title: "Exit Editor",
+        message: "Are you sure want exit? your data will not be saved",
         positiveText: "Exit",
         negativeText: "Cancel",
         onConfirm: () {
@@ -479,9 +482,18 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
           widget.level.data = data;
           widget.level.id = id;
 
-          levelController.firebaseFirestore.collection('levels').add(
+          levelController.firebaseFirestore
+              .collection('levels')
+              .add(
                 widget.level.toJson(),
-              );
+              )
+              .whenComplete(() {
+            Tools.showToast(text: "Level published");
+            NavHelper.navigateReplace(
+              context,
+              const LevelSelectionScene(),
+            );
+          });
         },
         onCancel: () {
           Navigator.pop(context);
