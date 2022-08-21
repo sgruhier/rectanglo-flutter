@@ -101,7 +101,7 @@ class _PopButtonState extends State<PopButton>
         poppingAnimationController.animateTo(1);
       },
       onTapDown: (_) {
-        assetsController.positiveTap.start();
+        assetsController.playPositiveTap();
         poppingAnimationController.animateTo(0.9);
       },
       onTapUp: (_) {

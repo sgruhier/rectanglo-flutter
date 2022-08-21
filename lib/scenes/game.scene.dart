@@ -506,7 +506,7 @@ class _GameScreenState extends State<GameScreen> with TickerProviderStateMixin {
                 onWrongMove: (game) {
                   move.value--;
                   if (move.value == 0) {
-                    assetsController.lose.start();
+                    assetsController.playLose();
                     Tools.showCustomDialog(
                       context,
                       dismissable: false,

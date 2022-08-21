@@ -97,7 +97,7 @@ class _RippleButtonState extends State<RippleButton> {
             highlightColor: rippleColor.withOpacity(0.2),
             splashColor: rippleColor,
             onTap: () {
-              assetsController.positiveTap.start();
+              assetsController.playPositiveTap();
               if (widget.onTap != null) widget.onTap!();
             },
             child: Padding(

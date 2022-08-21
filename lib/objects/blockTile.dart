@@ -50,9 +50,9 @@ class BlockTile extends PositionComponent with Tappable {
   void tapBlockTile() {
     if (currentState == 0) {
       if (state == 1) {
-        assetsController.positiveTap.start();
+        assetsController.playPositiveTap();
       } else {
-        assetsController.negativeTap.start();
+        assetsController.playNegativeTap();
         if (onWrongMove != null) onWrongMove!();
       }
     }

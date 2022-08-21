@@ -136,9 +136,9 @@ class _GameCompleteScreenState extends State<GameCompleteScreen>
       }
     });
 
-    assetsController.win.start().whenComplete(() {
+    assetsController.playWin().whenComplete(() {
       Future.delayed(const Duration(seconds: 1), () {
-        assetsController.confetti.start();
+        assetsController.playConfetti();
 
         _leftConfetty.play();
         _rightConfetty.play();
