@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class Tools {
   static changeStatusbarIconColor({
@@ -11,6 +12,16 @@ class Tools {
         statusBarColor: statusBarColor,
         statusBarIconBrightness: darkIcon ? Brightness.dark : Brightness.light,
       ),
+    );
+  }
+
+  static void showToast({
+    required String text,
+    Toast duration = Toast.LENGTH_SHORT,
+  }) {
+    Fluttertoast.showToast(
+      msg: text,
+      toastLength: duration,
     );
   }
 
@@ -38,5 +49,9 @@ class Tools {
       context: context,
       pageBuilder: (context, animation1, animation2) => Container(),
     );
+  }
+
+  static void closeKeyboard(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
   }
 }

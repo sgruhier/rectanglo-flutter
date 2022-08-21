@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rectanglo/components/pop_button.dart';
 import 'package:rectanglo/config/themes.dart';
 import 'package:rectanglo/r.dart';
+import 'package:rectanglo/scenes/create_level_info.scene.dart';
 import 'package:rectanglo/scenes/level_selection.scene.dart';
 import 'package:rectanglo/utils/nav_helper.dart';
 import 'package:widget_helper/widget_helper.dart';
@@ -106,11 +107,11 @@ class _MainMenuSceneState extends State<MainMenuScene> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Setting",
+                                    "About",
                                     style: Themes().blackBold20,
                                   ),
                                   Text(
-                                    "Minimal game\nsettings",
+                                    "Developer Information",
                                     style: Themes().black14,
                                   ).addMarginTop(4),
                                 ],
@@ -119,7 +120,7 @@ class _MainMenuSceneState extends State<MainMenuScene> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: const [
                                   Icon(
-                                    Icons.settings,
+                                    Icons.info_outline_rounded,
                                     color: Themes.primary,
                                     size: 48,
                                   ),
@@ -138,7 +139,9 @@ class _MainMenuSceneState extends State<MainMenuScene> {
                 color: Colors.white,
                 shadowColor: Colors.black.withOpacity(0.1),
                 enableShadow: true,
-                onTap: () {},
+                onTap: () {
+                  NavHelper.navigatePush(context, const CreateLevelInfo());
+                },
                 padding: EdgeInsets.zero,
                 child: SizedBox(
                   width: double.infinity,
@@ -173,7 +176,7 @@ class _MainMenuSceneState extends State<MainMenuScene> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               SvgPicture.asset(
-                                AssetImages.controller,
+                                AssetImages.paintbrush,
                                 width: 56,
                                 height: 56,
                               ),

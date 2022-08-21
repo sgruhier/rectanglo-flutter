@@ -3,6 +3,7 @@ class AssetImages {
 	static const String controller = 'assets/images/controller.svg';
 	static const String cross = 'assets/images/cross.png';
 	static const String glow = 'assets/images/glow.png';
+	static const String paintbrush = 'assets/images/paintbrush.svg';
 }
 
 class AssetSfx {

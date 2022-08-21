@@ -1,10 +1,13 @@
+import 'package:flutter/animation.dart';
 import 'package:get/get.dart';
+import 'package:rectanglo/config/themes.dart';
 
 enum PenTool {
   mark,
-  cross,
+  delete,
 }
 
 class PlayerController extends GetxController {
   Rx<PenTool> pointer = Rx(PenTool.mark);
+  Rx<Color> selectedColor = Rx(Themes.primary);
 }

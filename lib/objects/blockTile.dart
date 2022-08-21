@@ -13,6 +13,7 @@ class BlockTile extends PositionComponent with Tappable {
   final PlayerController playerController = Get.put(PlayerController());
   final AssetsController assetsController = Get.put(AssetsController());
   final Paint blockPaint = Paint();
+  bool editMode;
   VoidCallback? onTap;
   VoidCallback? onWrongMove;
 
@@ -36,6 +37,7 @@ class BlockTile extends PositionComponent with Tappable {
     required this.state,
     required this.currentState,
     required this.color,
+    this.editMode = false,
     this.onWrongMove,
     this.onTap,
     super.size,
@@ -48,17 +50,40 @@ class BlockTile extends PositionComponent with Tappable {
   BlockTile copyWith() => this;
 
   void tapBlockTile() {
-    if (currentState == 0) {
-      if (state == 1) {
-        assetsController.playPositiveTap();
-      } else {
-        assetsController.playNegativeTap();
-        if (onWrongMove != null) onWrongMove!();
+    if (editMode) {
+      switch (playerController.pointer.value) {
+        case PenTool.mark:
+          if (currentState == 0 ||
+              color != playerController.selectedColor.value) {
+            assetsController.playPositiveTap();
+            state = 1;
+            currentState = 1;
+            color = playerController.selectedColor.value;
+            trigger = 0.2;
+          }
+          break;
+        case PenTool.delete:
+          if (currentState == 1) {
+            assetsController.playNegativeTap();
+            state = 0;
+            currentState = 0;
+            trigger = 0.2;
+          }
+          break;
       }
-    }
+    } else {
+      if (currentState == 0) {
+        if (state == 1) {
+          assetsController.playPositiveTap();
+        } else {
+          assetsController.playNegativeTap();
+          if (onWrongMove != null) onWrongMove!();
+        }
+      }
 
-    currentState = 1;
-    trigger = 0.2;
+      currentState = 1;
+      trigger = 0.2;
+    }
 
     if (onTap != null) onTap!();
   }

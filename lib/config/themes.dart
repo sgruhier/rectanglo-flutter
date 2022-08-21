@@ -3,9 +3,40 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Themes {
   static const Color primary = Color(0xffFCC233);
-  static const Color black = Color(0xff4F4F4F);
+  static const Color black = Color(0xff000000);
   static const Color red = Color(0xffEB5757);
   static const Color green = Color(0xff27AE60);
+  static const Color stroke = Color(0xffBCBCBC);
+  static const Color blue = Color(0xff4751D7);
+  static const Color reddish = Color(0xffFF576B);
+  static const Color cyan = Color(0xff0CEAE2);
+  static const Color orange = Color(0xffffff904a);
+  static const Color purple = Color(0xff874EDC);
+  static const Color blueGrey = Color(0xffA9C8F2);
+  static const Color magenta = Color(0xffE92B96);
+  static const Color yellow = Color(0xffFFD228);
+  static const Color grey = Color(0xff757575);
+  static const Color greyBg = Color(0xffECEBE8);
+  static const Color line = Color(0xff424242);
+  static const Color white = Color(0xffffffff);
+  static const Color brown = Color(0xffb97a56);
+  static const Color sea = Color(0xff99d9ea);
+  static const Color sky = Color(0xff35a2e8);
+
+  static const List<Color> colors = [
+    white,
+    black,
+    red,
+    green,
+    blue,
+    orange,
+    purple,
+    magenta,
+    primary,
+    brown,
+    sea,
+    sky,
+  ];
 
   static BoxShadow emptyShadow = BoxShadow(
     offset: const Offset(0, 0),

@@ -48,6 +48,7 @@ dependencies:
   animated_background: ^2.0.0
   shared_preferences: ^2.0.15
   flutter_svg: ^1.1.4
+  fluttertoast: ^8.0.9
 
 dev_dependencies:
   flutter_test:
