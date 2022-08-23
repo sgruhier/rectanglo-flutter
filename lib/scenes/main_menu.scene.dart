@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:rectanglo/components/pop_button.dart';
 import 'package:rectanglo/config/themes.dart';
 import 'package:rectanglo/r.dart';
-import 'package:rectanglo/scenes/about.scene.dart';
+import 'package:rectanglo/scenes/about.scene/about.scene.dart';
 import 'package:rectanglo/scenes/create_level_info.scene.dart';
 import 'package:rectanglo/scenes/level_selection.scene.dart';
 import 'package:rectanglo/utils/nav_helper.dart';

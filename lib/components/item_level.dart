@@ -9,23 +9,37 @@ import 'package:widget_helper/widget_helper.dart';
 
 import '../models/level.dart';
 
-class ItemLevel extends StatelessWidget {
+class ItemLevel extends StatefulWidget {
   final Level level;
-  final List<Color> levelColor = [
-    Themes.green,
-    Themes.primary,
-    Themes.red,
-  ];
-  final List<String> alpha = ["E", "N", "H"];
-  final List<String> levelDifficulty = ["Easy", "Normal", "Hard"];
   final VoidCallback onTap;
-  final LevelController levelController = Get.put(LevelController());
 
   ItemLevel({
     super.key,
     required this.level,
     required this.onTap,
   });
+
+  @override
+  State<ItemLevel> createState() => _ItemLevelState();
+}
+
+class _ItemLevelState extends State<ItemLevel>
+    with SingleTickerProviderStateMixin {
+  late AnimationController itemAnimation = AnimationController(
+    vsync: this,
+    duration: Duration(milliseconds: 300),
+  );
+  final List<Color> levelColor = [
+    Themes.green,
+    Themes.primary,
+    Themes.red,
+  ];
+
+  final List<String> alpha = ["E", "N", "H"];
+
+  final List<String> levelDifficulty = ["Easy", "Normal", "Hard"];
+
+  final LevelController levelController = Get.put(LevelController());
 
   @override
   Widget build(BuildContext context) {
@@ -35,33 +49,33 @@ class ItemLevel extends StatelessWidget {
       padding: const EdgeInsets.all(4),
       color: Colors.white,
       shadowColor: Colors.black.withOpacity(0.1),
-      onTap: onTap,
+      onTap: widget.onTap,
       child: Obx(
         () => Column(
           children: [
-            if (levelController.finishedLevel.contains(level.id))
+            if (levelController.finishedLevel.contains(widget.level.id))
               FlatCard(
-                color: level.backgroundColor,
+                color: widget.level.backgroundColor,
                 child: Center(
                   child: CustomPaint(
                     size: const Size(100, 100),
-                    painter: CoverCard(level: level),
+                    painter: CoverCard(level: widget.level),
                   ),
                 ),
               ).addExpanded
             else
               FlatCard(
                 width: double.infinity,
-                color: levelColor[level.difficulty],
+                color: levelColor[widget.level.difficulty],
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      alpha[level.difficulty],
+                      alpha[widget.level.difficulty],
                       style: Themes().whiteBold32,
                     ),
                     Text(
-                      levelDifficulty[level.difficulty],
+                      levelDifficulty[widget.level.difficulty],
                       style: Themes().whiteBold14,
                     ),
                   ],
@@ -70,7 +84,7 @@ class ItemLevel extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  level.description,
+                  widget.level.description,
                   style: Themes().blackBold16,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -85,7 +99,7 @@ class ItemLevel extends StatelessWidget {
                   color: Themes.primary,
                 ),
                 Text(
-                  level.playersCount.toString(),
+                  widget.level.playersCount.toString(),
                   style: Themes().black16,
                 ).addMarginLeft(4),
                 const Icon(
@@ -94,7 +108,7 @@ class ItemLevel extends StatelessWidget {
                   color: Themes.primary,
                 ).addMarginLeft(12),
                 Text(
-                  level.creatorName,
+                  widget.level.creatorName,
                   style: Themes().black16,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

@@ -10,7 +10,7 @@ import '../components/ripple_button.dart';
 import '../data/controller/player_controller.dart';
 import '../models/level.dart';
 import '../utils/nav_helper.dart';
-import 'game.scene.dart';
+import 'game.scene/game.screen.dart';
 
 class LevelSelectionScene extends StatefulWidget {
   const LevelSelectionScene({Key? key}) : super(key: key);

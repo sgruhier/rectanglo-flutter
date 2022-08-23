@@ -5,8 +5,8 @@ import 'package:rectanglo/r.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:widget_helper/widget_helper.dart';
 
-import '../components/ripple_button.dart';
-import '../config/themes.dart';
+import '../../components/ripple_button.dart';
+import '../../config/themes.dart';
 
 class AboutScreen extends StatefulWidget {
   const AboutScreen({super.key});
