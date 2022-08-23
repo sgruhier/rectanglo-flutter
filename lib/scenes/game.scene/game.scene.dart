@@ -168,88 +168,11 @@ class GameScene extends FlameGame with HasTappables, HasDraggables {
       }
     }
 
-    drawBoardBorder(canvas);
+    controller.drawBoardBorder(
+      level: level,
+      canvas: canvas,
+    );
 
     super.render(canvas);
-  }
-
-  void drawBoardBorder(Canvas canvas) {
-    var horizontalCenter = controller.horizontalCenter;
-    var verticalCenter = controller.verticalCenter;
-
-    var objBlockWidth = controller.objBlockWidth;
-    var objBlockHeight = controller.objBlockHeight;
-
-    var horizontalHintCount = controller.horizontalHintCount;
-    var verticalHintCount = controller.verticalHintCount;
-
-    var widthBlock = controller.widthBlock;
-    var heightBlock = controller.heightBlock;
-
-    final double _boardPosX =
-        horizontalCenter + (horizontalHintCount * objBlockWidth);
-    final double _boardPosY =
-        verticalCenter + (verticalHintCount * objBlockHeight);
-    final double _boardWidth = widthBlock * objBlockWidth;
-    final double _boardHeight = heightBlock * objBlockHeight;
-
-    switch (level.difficulty) {
-      case 0:
-        canvas.drawRect(
-          Rect.fromLTWH(
-            _boardPosX,
-            _boardPosY,
-            _boardWidth,
-            _boardHeight,
-          ),
-          Paint()
-            ..style = PaintingStyle.stroke
-            ..color = Colors.black
-            ..strokeWidth = 1,
-        );
-        break;
-      case 1:
-        double segmentWidth = _boardWidth / 2;
-        double segmentHeight = _boardHeight / 2;
-
-        for (int y = 0; y < 2; y++) {
-          for (int x = 0; x < 2; x++) {
-            canvas.drawRect(
-              Rect.fromLTWH(
-                _boardPosX + (x * segmentWidth),
-                _boardPosY + (y * segmentHeight),
-                segmentWidth,
-                segmentHeight,
-              ),
-              Paint()
-                ..style = PaintingStyle.stroke
-                ..color = Colors.black
-                ..strokeWidth = 1,
-            );
-          }
-        }
-        break;
-      case 2:
-        double segmentWidth = _boardWidth / 3;
-        double segmentHeight = _boardHeight / 3;
-
-        for (int y = 0; y < 3; y++) {
-          for (int x = 0; x < 3; x++) {
-            canvas.drawRect(
-              Rect.fromLTWH(
-                _boardPosX + (x * segmentWidth),
-                _boardPosY + (y * segmentHeight),
-                segmentWidth,
-                segmentHeight,
-              ),
-              Paint()
-                ..style = PaintingStyle.stroke
-                ..color = Colors.black
-                ..strokeWidth = 1,
-            );
-          }
-        }
-        break;
-    }
   }
 }

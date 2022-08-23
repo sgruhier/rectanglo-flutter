@@ -5,6 +5,7 @@ import 'package:flame/game.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rectanglo/scenes/create_level.scene/controllers/create_level_controller.dart';
 import 'package:widget_helper/widget_helper.dart';
 
 import '../../components/pop_button.dart';
@@ -38,12 +39,20 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
   final AssetsController assetsController = Get.put(AssetsController());
   final PlayerController playerController = Get.put(PlayerController());
   final LevelController levelController = Get.put(LevelController());
+  final CreateLevelController createLevelController = Get.put(
+    CreateLevelController(),
+  );
 
   List<List<BlockTile>> maxtrix = [];
 
   @override
   void initState() {
     super.initState();
+    createLevelController.initCallback(
+      onChangeMatrix: (blockMatrix) {
+        maxtrix = blockMatrix;
+      },
+    );
   }
 
   @override
@@ -96,9 +105,6 @@ class _LevelEditorScreenState extends State<LevelEditorScreen>
               game: LevelEditor(
                 screenSize: MediaQuery.of(context).size,
                 level: widget.level,
-                onChangeMatrix: (blockMatrix) {
-                  maxtrix = blockMatrix;
-                },
               ),
             ),
             Center(
