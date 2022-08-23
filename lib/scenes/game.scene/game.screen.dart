@@ -15,7 +15,7 @@ import '../../data/controller/assets_controller.dart';
 import '../../models/level.dart';
 import '../../utils/nav_helper.dart';
 import '../../utils/tools.dart';
-import '../game_complete.scene.dart';
+import '../game_complete.scene/game_complete.screen.dart';
 import 'game.scene.dart';
 
 class GameScreen extends StatefulWidget {

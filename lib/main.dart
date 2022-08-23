@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rectanglo/scenes/main_menu.scene.dart';
+import 'package:rectanglo/scenes/main_menu.scene/main_menu.scene.dart';
 
 import 'firebase_options.dart';
 

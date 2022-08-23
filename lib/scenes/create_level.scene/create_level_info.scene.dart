@@ -6,12 +6,12 @@ import 'package:rectanglo/components/textarea.dart';
 import 'package:rectanglo/config/themes.dart';
 import 'package:rectanglo/models/level.dart';
 import 'package:rectanglo/objects/blockTile.dart';
-import 'package:rectanglo/scenes/level_editor.scene.dart';
 import 'package:rectanglo/utils/nav_helper.dart';
 import 'package:rectanglo/utils/tools.dart';
 import 'package:widget_helper/widget_helper.dart';
 
-import '../components/ripple_button.dart';
+import '../../components/ripple_button.dart';
+import 'level_editor.screen.dart';
 
 class CreateLevelInfo extends StatefulWidget {
   const CreateLevelInfo({super.key});

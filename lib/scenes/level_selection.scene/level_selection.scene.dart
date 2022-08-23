@@ -5,12 +5,12 @@ import 'package:rectanglo/config/themes.dart';
 import 'package:rectanglo/data/controller/level_controller.dart';
 import 'package:widget_helper/widget_helper.dart';
 
-import '../components/item_level.dart';
-import '../components/ripple_button.dart';
-import '../data/controller/player_controller.dart';
-import '../models/level.dart';
-import '../utils/nav_helper.dart';
-import 'game.scene/game.screen.dart';
+import '../../components/item_level.dart';
+import '../../components/ripple_button.dart';
+import '../../data/controller/player_controller.dart';
+import '../../models/level.dart';
+import '../../utils/nav_helper.dart';
+import '../game.scene/game.screen.dart';
 
 class LevelSelectionScene extends StatefulWidget {
   const LevelSelectionScene({Key? key}) : super(key: key);
