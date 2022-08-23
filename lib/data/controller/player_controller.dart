@@ -1,4 +1,5 @@
-import 'package:flutter/animation.dart';
+import 'dart:ui';
+
 import 'package:get/get.dart';
 import 'package:rectanglo/config/themes.dart';
 

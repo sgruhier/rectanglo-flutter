@@ -25,6 +25,7 @@ class GameScene extends FlameGame with HasTappables, HasDraggables {
   final Function(FlameGame game) onWrongMove;
   final Function(List<List<BlockTile>> matrixBlocks) onComplete;
   final Size screenSize;
+  final List<double> fontSizes = [18, 16, 14];
 
   int widthBlock = 5;
   int heightBlock = 5;
@@ -114,9 +115,7 @@ class GameScene extends FlameGame with HasTappables, HasDraggables {
     for (Component component in children) {
       component.removeFromParent();
     }
-    double fontSize = (3 - level.difficulty) / 3 * 24;
-
-    if (fontSize >= 24) fontSize = 18;
+    double fontSize = fontSizes[level.difficulty];
 
     textPaint = TextPaint(
       style: Themes().black18!.copyWith(
